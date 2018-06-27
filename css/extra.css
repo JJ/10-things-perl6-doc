@@ -5,6 +5,11 @@ section[data-background] h1 {
        border-radius: 30px
 }
 
+h1 strong {
+    font-family: 'Prosto One' !important;
+    color: rgb(225,138,7);
+}
+
 section[data-background] h2 {
        background-color:rgba(21,20,19,0.7);
        padding: 30px;
