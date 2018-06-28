@@ -53,7 +53,7 @@
               data-background='https://farm2.staticflickr.com/1801/41251257860_13997f85fe_k_d.jpg'>
               
               <aside class='notes'>These dinosaurs, drawn by my
-            daughter, are remarkably similar, look at the tiny hands,
+            daughters, are remarkably similar, look at the tiny hands,
             the open jaws, maybe the jail. Both drawn by my daughters,
                 one of which is left-handed and the other is
             right-handed.</aside>
@@ -71,17 +71,109 @@
               <code>:10years</code></h1>
             </section>
           </section>
-          
-          <section><h1>Perl&nbsp;<strong>6</strong></h1></section>
 
+          <section>
+            <section>
+              <h1>Perl&nbsp;<strong>6</strong></h1>
+            </section>
+
+            <section><h1>Docs aren't written by those who
+            <strong>know</strong></h1>
+            </section>
+
+            
+            <section><h1>But by those who
+              <strong>can</strong></h1>
+            </section>
+
+            <section><pre><code>grammar HasOur {
+    token TOP {
+        :our $our = 'þor';
+        $our \s+ is \s+ mighty
+    }
+}
+
+say HasOur.parse('þor is mighty');
+say $HasOur::our;</code></pre>
+
+              <aside class='notes'>I really had no idea this could be
+          done. Absolutely no idea. I had to look it up, test it, feel
+                familiar with it, and then put it into the <a href='https://docs.perl6.org/language/regexes#index-entry-%3Aour'>documentation</a></aside>
+          </section>
+
+          <section 
+            data-background='https://farm8.staticflickr.com/7117/7788853406_cc89031636_o_d.jpg'>
+            <h1>And you can see <strong>the dinosaur</strong>
+            right there</h1>
+          </section>
+
+          <section>
+            <img
+            src='https://farm2.staticflickr.com/1765/29200354098_575b7083a0_o_d.jpg'
+            alt='þor, the car'>
+          </section>
+
+          </section>
+
+          <section>
           <section><h1><strong>You</strong> become the
             documentation</h1></section>
 
-          <section><h1> <strong>!</strong> lazyness</h1>
-            <h1 class='fragment'><strong>!</strong> impatience</h1>
-            <h1 class='fragment'><strong>!</strong> hubris</h1>
+          <section><pre><code>class DNA does Iterable does Iterator {
+    has $.chain;
+    has Int $!index = 0;
+
+    method new ($chain where {
+                       $chain ~~ /^^ <[ACGT]>+ $$ / and
+                       $chain.chars %% 3 } ) {
+        self.bless( :$chain );
+}</code></pre>
           </section>
 
+          <section><pre><code>#... continues from class DNA does Iterable does Iterator {
+    method iterator( ){ self }
+    method pull-one( --> Mu){
+        if $!index < $.chain.chars {
+            my $codon = $.chain.comb.rotor(3)[$!index div 3];
+            $!index += 3;
+            return $codon;
+        } else {
+            return IterationEnd;
+        }
+    }
+          </code></pre>
+          </section>
+
+          <section><pre><code>#... continues from class DNA does Iterable does Iterator {
+              method push-all(Iterator:D: $target) {
+        for $.chain.comb.rotor(3) -> $codon {
+            $target.push: $codon;
+        }
+    }
+
+};</code></pre></section>
+
+          <section><pre><code># class DNA already defined
+my $b := DNA.new("AAGCCT");</code></pre>
+
+            <h1 class='fragment'><strong>Magic</strong> happens</h1>
+            <pre class='fragment'><code>my @dna-array = $b;
+say @dna-array; # OUTPUT: «[(A A G) (C C T)]␤»</code></pre>
+          </section>
+
+          </section>
+
+          <!-- Next section -->
+
+          <section>
+            <section><h1> <strong>!</strong> lazyness</h1>
+              <h1 class='fragment'><strong>!</strong> impatience</h1>
+              <h1 class='fragment'><strong>!</strong> hubris</h1>
+            </section>
+
+          </section>
+
+          <!-- Next section -->
           <section><h1>Toes</h1></section>
 
           <section><h1><strong>You</strong> are the
