@@ -235,18 +235,38 @@ say @dna-array; # OUTPUT: «[(A A G) (C C T)]␤»</code></pre>
               <h1 class='fragment'><strong>!</strong> hubris</h1>
             </section>
 
+            <section> <h1> !lazy <strong><code>==</code></strong>
+            eager?</h1>
+              <pre><code>my @lazy-array = lazy 1, 11, 121 ... 10**100;
+say @lazy-array.is-lazy;     # OUTPUT: «True␤»
+say @lazy-array[];           # OUTPUT: «[...]␤»
+my @no-longer-lazy = eager @lazy-array;  # Forcing eager evaluation
+say @no-longer-lazy.is-lazy;             # OUTPUT: «False␤»
+say @no-longer-lazy[];</code></pre>
+
+              <aside class='notes'>This actually was done while
+                looking for lazy code.</aside>
+            </section>
+
+            <section data-background='img/closing.png'>
+              <h1 class='fragment'>! Laziness <code>eq</code> ｢Diligence｣</h1>
+            </section>
+
+
           </section>
 
           <!-- Next section -->
           <section><h1>Toes</h1></section>
 
-          <section><h1><strong>You</strong> are the
-            documentation</h1></section>
+          <section>
+            <section><h1><strong>Flow</strong> with the
+              documentation</h1></section>
+            
+            <section><h1>GitHub</h1>
+              <h2 classs='fragment'> <strong>→</strong> Rakudo</h2>
+              <h3 classs='fragment'> <strong>→</strong> Roast</h3>
 
-          <section><h1>GitHub</h1>
-            <h2 classs='fragment'> <strong>→</strong> Rakudo</h2>
-            <h3 classs='fragment'> <strong>→</strong> Roast</h3>
-
+            </section>
 
           </section>
 
