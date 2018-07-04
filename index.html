@@ -344,14 +344,30 @@ say "2nd De Morgan is ", $de-Morgan2;</code></pre>
             </section>
 
             <section><h1>We don't want it <strong>perfect</strong></h1>
-            <h1 class='fragment'>We want it
-            <strong>there</strong></h1>
+              <h1 class='fragment'>We want it
+                <strong>there</strong></h1>
+            </section>
 
-          </section>
+            <section><h1>Is this perfect?</h1>
+              <pre><code>my @regex-check = ( /&lt;alnum>/, /&lt;alpha>/, /&lt;punct>/ );
+say @regex-check.map: "33af" ~~ *;
+# OUTPUT: «(｢3｣␤ alnum => ｢3｣ ｢a｣␤ alpha => ｢a｣ Nil)␤»</code></pre>
+
+                <aside class='notes'>Probably not. It illustrates how
+          callables can be used inside any data structure, with an
+          array of regexes, which are callables. Maybe it's a bit too
+          complex (Hey? Regexes are callables? ), maybe it's too
+          simple (You have not mixed callables with other kind of data
+          structures!), but the whole point of it is that it's there
+                  and there's some baseline you can improve
+          on.</aside>
+
+            </section>
             
 
           </section>
 
+          <!-- Cooking -->
 
 
           <section>
@@ -359,15 +375,97 @@ say "2nd De Morgan is ", $de-Morgan2;</code></pre>
               <h1>⑧</h1>
             </div>
 
+            <section>
+              <h1>Documentation <code>=~=</code> <strong>cooking</strong></h1>
+              <h2 class='fragment'>Better there (slightly charred) than
+                order pizza</h2>
 
-            <h1>Cooking</h1></section>
+              <aside class='notes'>This is just an excuse to segue
+                into my experiments with cooking at home. Besides, I
+                got Cooking for Geeks in the London Perl Workshop, so
+                this is fully Perl-related.</aside>
+            </section>
+            
+            <section
+            data-background='https://farm1.staticflickr.com/839/28281154917_ed7b82465a_k_d.jpg'
+            title='chili con carne'>
+            </section>
+
+            <section
+          data-background='https://farm2.staticflickr.com/1731/42617287851_f0399c5b95_k_d.jpg'
+          title='risotto with ham and peas'>
+              <aside class='notes'>Same as writing documentation, you
+          have to plan, prepare ingredients, test stuff (documentation
+          examples, salt), and then have stuff ready by lunchtime, or
+          have it ready to close an issue. So there are
+          similarities. But basically, I staid at home to work in the
+          grant instead of going to my university office and cooking
+          was an excuse to get out, buy fresh groceries, know the
+          neighborhood shops, and even renewing the set of tools that
+          do the actual cooking. It's been a nice experience, my
+          family has enjoyed it, and I have learned a lot. I will
+          continue to cook from now on, and stay at home as many days
+                as university duties allow. Baseline is stay healthy
+          and know the community in your neighborhood. And if you can
+          do it in a creative way, much better.</aside>
+            </section>
+
+            <section><pre><code>class Cook {
+    has @.utensils  is rw;
+    has @.cookbooks is rw;
+    method cook( $food ) { return "Cooking $food";  }
+    method clean_utensils { 
+      return "Cleaning $_" for @.utensils; 
+    }
+    multi method gist(Cook:U:) { '⚗' ~ self.^name ~ '⚗' }
+    multi method gist(Cook:D:) { 
+      '⚗ Cooks with ' ~ @.utensils.join( " ‣ ") \ 
+      ~ ' using ' \
+      ~ @.cookbooks.map( "«" ~ * ~ "»").join( " and ") }
+}
+
+            </code></pre>
+              <aside class='notes'>So, what do you have to do if
+              you're a geek cook? Cook food and, the most important
+              thing, is to clean utensils. And kitchen cupboard
+              handles. Pro tip: get everything ready in the table
+              before you start, so that you don't have to go get
+              something with icky onion-smelling hands from a cupboard.
+Cooking stuff has been done very
+    extensively in the class tutorial. So I added this to explain how
+                to override gists, in the definite and undefinite
+    case.</aside>
+            </section>
+
+            <section><h1>Cooks will cook</h1>
+              <pre><code>my $cook = Cook.new(
+    utensils => &lt;spoon ladle knife pan>,
+    cookbooks => ['Cooking for geeks','The French Chef Cookbook']);
+say Cook.gist; # OUTPUT: «⚗Cook⚗»
+say $cook.gist; 
+# OUTPUT: «⚗ Cooks with spoon ‣ ladle ‣ knife ‣ pan using 
+    «Cooking for geeks» and «The French Chef Cookbook»␤»</code></pre>
+            </section>
+          </section>
 
           <section>
             <div class='fija'>
               <h1>⑨</h1>
             </div>
 
-            <h1><strong>Complex</strong> system</h1>
+            <section>
+              <h1>We are in a <strong>complex</strong> system</h1>
+            </section>
+
+            <section data-background='img/sankey.png' title='sankey diagram'>
+              <h1><a href='https://jj.github.io/TPF-Grant/html/sankey.html'>Sankey
+              diagram</a></h1>
+            </section>
+
+            <section
+            data-background='https://raw.githubusercontent.com/JJ/TPF-Grant/master/illos/zipf-lines-written.png'>
+              <h1><strong>Zipf</strong> is the law</h1></section>
+            </section>
 
           </section>
 
@@ -377,7 +475,7 @@ say "2nd De Morgan is ", $de-Morgan2;</code></pre>
           <div class='fija2'>
           <h1>⑥</h1>
           </div>
-          <aside class='note'>Complexity is not helped by the fact
+          <aside class='notes'>Complexity is not helped by the fact
           that there are all kind of people dwelling in the different
           Perl 6 repos. So it's a bit like walking on the
           beach. You are very likepy to step on one. Won't be naming
