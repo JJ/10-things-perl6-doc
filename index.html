@@ -467,6 +467,12 @@ say $cook.gist;
               <h1><strong>Zipf</strong> is the law</h1></section>
             </section>
 
+            <section><h1>Ducks do complex</h1>
+              <pre><code>say [[1, 2, [3, 4]], [[5, 6, [7, 8]]]].duckmap:
+   -> $array where .elems == 2 { $array.elems };
+# OUTPUT: «[[1 2 2] [5 6 2]]␤» </code></pre>
+            </section>
+
           </section>
 
           <!-- Next section -->
@@ -479,7 +485,7 @@ say $cook.gist;
           that there are all kind of people dwelling in the different
           Perl 6 repos. So it's a bit like walking on the
           beach. You are very likepy to step on one. Won't be naming
-          names, but, well, it happens.</aside>
+            names, but, well, it happens. <em>All</em> the time.</aside>
           </section>
 
           <!-- Last setcion -->
