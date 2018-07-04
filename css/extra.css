@@ -89,13 +89,16 @@ section[data-background] blockquote {
   color: white;
 }
 
-.fija div {
-            font: 14px "Fira Mono";
-            background-color: blue;
-            text-align: right;
-            padding: 2px;
-            margin: 1px;
-            color:  #ff2c2d;
+.fija {
+    position: relative;
+    bottom: -400px;
+    left: -850px;
+    font: "Nanum Gothic Coding";
+    text-align: right;
+    padding: 2px;
+    margin: 1px;
+    color:  #ff2c2d;
+    z-index: 1;           
 }
 
 /* Posición fija */
@@ -104,7 +107,7 @@ section[data-background] blockquote {
         position: fixed;
         border: 3px solid orange;
         top: 0;
-        right: 0;
+        left: 0;
         width: 200px;
         z-index: 1;           
 }
