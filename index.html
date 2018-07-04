@@ -277,10 +277,10 @@ say @dna-array; # OUTPUT: «[(A A G) (C C T)]␤»</code></pre>
 
             <section> <h1> !lazy <strong><code>==</code></strong>
             eager?</h1>
-              <pre><code>my @lazy-array = lazy 1, 11, 121 ... 10**100;
-say @lazy-array.is-lazy;     # OUTPUT: «True␤»
-say @lazy-array[];           # OUTPUT: «[...]␤»
-my @no-longer-lazy = eager @lazy-array;  # Forcing eager evaluation
+              <pre><code>my  @lazy-array = lazy 1, 11, 121 ... 10**100;
+say @lazy-array.is-lazy;                 # OUTPUT: «True␤»
+say @lazy-array[];                       # OUTPUT: «[...]␤»
+my  @no-longer-lazy = eager @lazy-array; # Forcing eager evaluation
 say @no-longer-lazy.is-lazy;             # OUTPUT: «False␤»
 say @no-longer-lazy[];</code></pre>
 
@@ -295,16 +295,17 @@ say @no-longer-lazy[];</code></pre>
             <section><h1><strike>! Hubris</strike></h1>
               <h1 class='fragment'> $hubris ≅ 0</h1>
 
-              <pre class='fragment'><code>git whatchanged --author="[Mm]erelo" --diff-filter=A --no-commit-id --name-only | wc
-     30      30     720
-              </code></pre>
+              <pre class='fragment'><code>git whatchanged --author="[Mm]erelo" --diff-filter=A \
+    --no-commit-id --name-only | wc
+     30      30     720</code></pre>
             </section>
 
             
             <section><pre><code>my \U = 'a'..'z'.Set;
 sub postfix:<⁻>(Set $a) { U ⊖ $a }
 my @sets;
-@sets.push: Set.new( @alphabet.pick( @alphabet.elems.rand)) for @alphabet;
+@sets.push: Set.new( @alphabet.pick( @alphabet.elems.rand)) 
+    for @alphabet;
 my ($de-Morgan1,$de-Morgan2) = (True,True);
 for @sets X @sets -> (\A, \B){
     $de-Morgan1 &&= (A ∪ B)⁻  === A⁻ ∩ B⁻;
@@ -316,16 +317,6 @@ say "2nd De Morgan is ", $de-Morgan2;</code></pre>
 
           </section>
 
-          <!-- Next section -->
-          <section>
-            
-            <div class='fija'>
-              <h1>⑥</h1>
-            </div>
-
-            <h1>Toes</h1>
-
-          </section>
 
           <section>
 
@@ -378,6 +369,19 @@ say "2nd De Morgan is ", $de-Morgan2;</code></pre>
 
             <h1><strong>Complex</strong> system</h1>
 
+          </section>
+
+          <!-- Next section -->
+          <section data-background='img/feet.jpg'>
+          <h1>Toes</h1>
+          <div class='fija2'>
+          <h1>⑥</h1>
+          </div>
+          <aside class='note'>Complexity is not helped by the fact
+          that there are all kind of people dwelling in the different
+          Perl 6 repos. So it's a bit like walking on the
+          beach. You are very likepy to step on one. Won't be naming
+          names, but, well, it happens.</aside>
           </section>
 
           <!-- Last setcion -->

@@ -93,7 +93,7 @@ section[data-background] blockquote {
     position: relative;
     bottom: -400px;
     left: -850px;
-    font: "Nanum Gothic Coding";
+    font: monospace;
     text-align: right;
     padding: 2px;
     margin: 1px;
@@ -101,6 +101,17 @@ section[data-background] blockquote {
     z-index: 1;           
 }
 
+.fija2 {
+    position: relative;
+    bottom: -200px;
+    left: -750px;
+    font: monospace;
+    text-align: right;
+    padding: 2px;
+    margin: 1px;
+    color:  #ff2c2d;
+    z-index: 1;           
+}
 /* Posición fija */
 
 #fija { 
