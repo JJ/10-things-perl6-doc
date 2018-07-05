@@ -183,9 +183,14 @@ say $HasOur::our;</code></pre>
 
             <h1>Every <strong>other</strong> language in the
               <strong>world</strong></h1>
-
+            
           </section>
 
+          <section><h1><code>awk</code></h1>
+            <pre><code>my $fixer = Proc::Async.new('awk', 
+    'BEGIN {print "!"} {print "^" gsub(/[\\:]/,"",$0)}', 
+    $input-file);</code></pre>
+          </section>
           </section>
 
           <!-- Third section -->
