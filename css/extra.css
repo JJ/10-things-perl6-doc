@@ -91,8 +91,8 @@ section[data-background] blockquote {
 
 .fija {
     position: relative;
-    bottom: -400px;
-    left: -850px;
+    bottom: -350px;
+    left: -650px;
     font: monospace;
     text-align: right;
     padding: 2px;
@@ -103,8 +103,8 @@ section[data-background] blockquote {
 
 .fija2 {
     position: relative;
-    bottom: -200px;
-    left: -750px;
+    bottom: -150px;
+    left: -650px;
     font: monospace;
     text-align: right;
     padding: 2px;
