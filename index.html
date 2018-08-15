@@ -134,7 +134,7 @@ title='Niño escribiendo'>
 	      documentation is a tool that anyone can use; by
 	      documenting a language, a feature, you literally write
 	      it into existence; if it can be used only by the people
-		who created it, does it even exist? Of course, you are not documenting from scratch, but you are probably going to write documentation for some features or attributes or parameters that will put them on the gamut of tools someone can use into her own programs.</aside>
+		who created it, does it even exist? Of course, you are not documenting from scratch, but you are probably going to write documentation for some features or attributes or parameters that will put them on the gamut of tools someone can use into her own programs. Leo Timmermans talked today about how trying do document smartmatch in Perl 5 made everyone understand what was the problem and the incoherence of it all. Documenting can also help language; it's not a simple, static thing of telling what's there, the syntax and what it does.</aside>
 	    </section>
 
             <section
@@ -291,51 +291,6 @@ say $HasOur::our;</code></pre>
               <h1>④</h1>
             </div>
 
-          <section><h1><strong>You</strong> become the
-            documentation</h1></section>
-
-          <section><pre><code>class DNA does Iterable does Iterator {
-    has $.chain;
-    has Int $!index = 0;
-
-    method new ($chain where {
-                       $chain ~~ /^^ <[ACGT]>+ $$ / and
-                       $chain.chars %% 3 } ) {
-        self.bless( :$chain );
-}</code></pre>
-          </section>
-
-          <section><pre><code>#... continues from class DNA does Iterable does Iterator {
-    method iterator( ){ self }
-    method pull-one( --> Mu){
-        if $!index < $.chain.chars {
-            my $codon = $.chain.comb.rotor(3)[$!index div 3];
-            $!index += 3;
-            return $codon;
-        } else {
-            return IterationEnd;
-        }
-    }
-          </code></pre>
-          </section>
-
-          <section><pre><code>#... continues from class DNA does Iterable does Iterator {
-              method push-all(Iterator:D: $target) {
-        for $.chain.comb.rotor(3) -> $codon {
-            $target.push: $codon;
-        }
-    }
-
-};</code></pre></section>
-
-          <section><pre><code># class DNA already defined
-my $b := DNA.new("AAGCCT");</code></pre>
-
-            <h1 class='fragment'><strong>Magic</strong> happens</h1>
-            <pre class='fragment'><code>my @dna-array = $b;
-say @dna-array; # OUTPUT: «[(A A G) (C C T)]␤»</code></pre>
-          </section>
-
           <section><h1>There are <strong>in</strong>frequently asked
           questions</h1>
             <aside class='notes'>And you have to answer them, too. Not
@@ -347,7 +302,7 @@ say @dna-array; # OUTPUT: «[(A A G) (C C T)]␤»</code></pre>
 
           <section>
             <img src='img/questions-so.png' alt='Questions tagged
-            perl6'>
+		 perl6'>
 
             <aside class='notes'>From <a
             href='http://data.stackexchange.com/stackoverflow/query/847857/perl6-questions-per-month#graph'>This
@@ -356,10 +311,14 @@ say @dna-array; # OUTPUT: «[(A A G) (C C T)]␤»</code></pre>
             sustainable.</aside>
           </section>
 
+	  <section data-background='https://farm2.staticflickr.com/1718/25128254506_d2c3a53486_b_d.jpg' title="I'm looking at you">
+	    <h1>Go and ask in StackOverflow!</h1>
+	    <h2 class='fragment'>+ Anwer + Upvote</h2>
+	    <aside class='notes'>We really need help there... </aside>
           </section>
 
+	  </section>
           <!-- Next section -->
-
           <section>
 
             <div class='fija'>
