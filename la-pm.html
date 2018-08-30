@@ -1,0 +1,486 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>There's a new Perl in town</title>
+    
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/extra.css">
+    <link rel="stylesheet" href="css/theme/white.css">
+    
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    
+    <!-- Printing and PDF exports -->
+    <script>
+     var link = document.createElement( 'link' );
+     link.rel = 'stylesheet';
+     link.type = 'text/css';
+     link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+     document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+	<section><h1><code>Tnere's-a.new(:Perl).in-town()</code></h1>
+	    <h3>GitHub: <code><a href='https://github.com/JJ'>JJ</a></code>,
+	      Twitter: <code><a href='https://twitter.com/jjmerelo'>@jjmerelo</a></code>,
+	      CPAN: <code><a href='https://metacpan.org/JMERELO'>JMERELO</a></code></h3>
+	    <h2>Perl 6 <em>doc</em> cer</h2>
+
+            <aside class='notes'>You should pronounce it
+	<em>dau-cher</em>; since I made the word up I can also make the
+	pronounciation up</aside>
+	</section>
+
+        <section>
+          <section>
+            <h3>3<sup>rd</sup> in # lines <code>perl6/doc</code></h3>
+	    <img src='img/lines-written.png' title='lines
+                   written'>
+            <aside class='notes'>That's 1 in every ten lines, more or less. Also 2nd in number of contributions and in number of files created.</aside>
+          </section>
+
+          <section>
+	    <h3 class='fragment'>1<sup>st</sup> in # issues
+              closed</h3>
+
+            <img src='img/closers-perl6-doc-ranking-top10.png'
+		 title='closed issues'>
+            <aside class='notes'>Tongue in cheek, my <a
+          href='http://news.perlfoundation.org/2018/06/grant-report-improving-perl-6.html'>Grant
+              manager called me the closer</a>. 1 in every 5 issues have been closed
+              by me, around 400 out of 2K issues closed... It's likely that if
+          you've read something in the perl 6 documentation, I have
+              done something related to this. And I feel a bit
+          self-conscious about this, because I don't like to boast,
+          but I want to convey it's really a lot of work.
+            </aside>
+          </section>
+
+        </section>
+
+        <section data-background='img/commits-authors-entropy.png'
+                 title='working on the thing'>
+	  <aside class='notes'>This is a bit of history, the number of commits made on the repo along time. There are three eras, and maybe right now it's the golden era. But enough factoids. Let's get to the thing itself, Perl 6 and its documentation.</aside>
+        </section>
+
+        <section
+           data-background='https://farm6.staticflickr.com/5262/5698994532_a64cc07b3a_b_d.jpg'
+          title='Stack of things'>
+            <h2>What is Perl&nbsp;6</h2>
+            <h1 class='fragment'>MoarVM + NQP + Rakudo</h1>
+            <h1 class='fragment'>+ <code>roast</code>
+            </h1>
+            <aside class='notes'><code>roast</code> is a set of test
+              that actually specify what is Perl 6 and what is not, it
+              makes sure that whatever considers itself perl6 adjusts
+              to specification</aside>
+
+        </section>
+
+	<section><h1>Perl&nbsp;6 has lotsa cool things!</h1></section>
+      
+        <section>
+	  <h1>Grammars!</h1>
+	  <pre><code>grammar HasOur {
+    token TOP {
+        :our $our = 'þor';
+        $our \s+ is \s+ mighty
+    }
+}
+
+say HasOur.parse('þor is mighty');
+say $HasOur::our;</code></pre>
+
+              <aside class='notes'>Talking about power, Þor is the one that is really powerful. And I really had no idea this could be
+          done. Absolutely no idea. I had to look it up, test it, feel
+                familiar with it, and then put it into the <a href='https://docs.perl6.org/language/regexes#index-entry-%3Aour'>documentation</a></aside>
+          </section>
+
+          <section 
+            data-background='https://farm8.staticflickr.com/7117/7788853406_cc89031636_o_d.jpg'>
+            <h1>And you can see <strong>the dinosaur</strong>
+            right there</h1>
+          </section>
+
+          <section>
+            <img
+            src='https://farm2.staticflickr.com/1765/29200354098_575b7083a0_o_d.jpg'
+            alt='þor, the car'>
+          </section>
+
+          <section data-background='https://farm2.staticflickr.com/1310/917406388_2442befe21_o_d.jpg'>
+
+	    <h2>But I also learned...</h2>
+             <h1 class='fragment'>Every <strong>other</strong> language in the
+              <strong>world</strong></h1>
+            
+          </section>
+
+          <section><h1><code>awk</code></h1>
+            <pre><code>my $fixer = Proc::Async.new('awk', 
+    'BEGIN {print "!"} {print "^" gsub(/[\\:]/,"",$0)}', 
+    $input-file);</code></pre>
+          </section>
+          </section>
+
+          <!-- Third section -->
+          <section>
+
+            <div class='fija'>
+              <h1>④</h1>
+            </div>
+
+          <section><h1>There are <strong>in</strong>frequently asked
+          questions</h1>
+            <aside class='notes'>And you have to answer them, too. Not
+          in a RTFM tone, but in a way that points them in the right
+          direction in the documentation and really helps
+              people. People ask questions in issues,
+          StackOverflow...</aside>
+          </section>
+
+          <section>
+            <img src='img/questions-so.png' alt='Questions tagged
+		 perl6'>
+
+            <aside class='notes'>From <a
+            href='http://data.stackexchange.com/stackoverflow/query/847857/perl6-questions-per-month#graph'>This
+              query in data.stackexchange.</a>. Latest months have
+              been very productive, but it might not be
+            sustainable.</aside>
+          </section>
+
+	  <section data-background='https://farm2.staticflickr.com/1718/25128254506_d2c3a53486_b_d.jpg' title="I'm looking at you">
+	    <h1>Go and ask in StackOverflow!</h1>
+	    <h2 class='fragment'>+ Anwer + Upvote</h2>
+	    <aside class='notes'>We really need help there... </aside>
+          </section>
+
+	  </section>
+          <!-- Next section -->
+          <section>
+
+            <div class='fija'>
+              <h1>⑤</h1>
+            </div>
+
+            <section><h1> <strong>!</strong> lazyness</h1>
+              <h1 class='fragment'><strong>!</strong> impatience</h1>
+              <h1 class='fragment'><strong>!</strong> hubris</h1>
+            </section>
+
+            <section> <h1> !lazy <strong><code>==</code></strong>
+            eager?</h1>
+              <pre><code>my  @lazy-array = lazy 1, 11, 121 ... 10**100;
+say @lazy-array.is-lazy;                 # OUTPUT: «True␤»
+say @lazy-array[];                       # OUTPUT: «[...]␤»
+my  @no-longer-lazy = eager @lazy-array; # Forcing eager evaluation
+say @no-longer-lazy.is-lazy;             # OUTPUT: «False␤»
+say @no-longer-lazy[];</code></pre>
+
+              <aside class='notes'>This actually was done while
+                looking for lazy code.</aside>
+            </section>
+
+            <section data-background='img/closing.png'>
+              <h1 class='fragment'>! Laziness <code>eq</code> ｢Diligence｣</h1>
+            </section>
+
+            <section><h1><strike>! Hubris</strike></h1>
+              <h1 class='fragment'> $hubris ≅ 0</h1>
+
+              <pre class='fragment'><code>git whatchanged --author="[Mm]erelo" --diff-filter=A \
+    --no-commit-id --name-only | wc
+     30      30     720</code></pre>
+            </section>
+
+            
+            <section><pre><code>my \U = 'a'..'z'.Set;
+sub postfix:<⁻>(Set $a) { U ⊖ $a }
+my @sets;
+@sets.push: Set.new( @alphabet.pick( @alphabet.elems.rand)) 
+    for @alphabet;
+my ($de-Morgan1,$de-Morgan2) = (True,True);
+for @sets X @sets -> (\A, \B){
+    $de-Morgan1 &&= (A ∪ B)⁻  === A⁻ ∩ B⁻;
+    $de-Morgan2 &&= (A ∩ B)⁻  === A⁻ ∪ B⁻;
+}
+say "1st De Morgan is ", $de-Morgan1;
+say "2nd De Morgan is ", $de-Morgan2;</code></pre>
+            </section>
+
+          </section>
+
+
+          <section>
+
+            <div class='fija'>
+              <h1>⑥</h1>
+            </div>
+        
+            <section><h1><strong>Flow</strong> with the
+              documentation</h1></section>
+
+            <section>
+              <h1>Is it <strong>documentable</strong>?
+              <h1 class='fragment'>Synopsis</h1>
+              <h2 class='fragment'> <strong>→</strong> Roast</h2>
+              <h3 class='fragment'> <strong>→</strong> Rakudo</h3>
+            </section>
+
+            <section>
+              <h1>Document it!</h1>
+              <h1 class='fragment'>GitHub</h1>
+              <h2 class='fragment'> <strong>→</strong> Rakudo</h2>
+              <h3 class='fragment'> <strong>→</strong> Roast</h3>
+
+            </section>
+
+            <section><h1>We don't want it <strong>perfect</strong></h1>
+              <h1 class='fragment'>We want it
+                <strong>there</strong></h1>
+            </section>
+
+            <section><h1>Is this perfect?</h1>
+              <pre><code>my @regex-check = ( /&lt;alnum>/, /&lt;alpha>/, /&lt;punct>/ );
+say @regex-check.map: "33af" ~~ *;
+# OUTPUT: «(｢3｣␤ alnum => ｢3｣ ｢a｣␤ alpha => ｢a｣ Nil)␤»</code></pre>
+
+                <aside class='notes'>Probably not. It illustrates how
+          callables can be used inside any data structure, with an
+          array of regexes, which are callables. Maybe it's a bit too
+          complex (Hey? Regexes are callables? ), maybe it's too
+          simple (You have not mixed callables with other kind of data
+          structures!), but the whole point of it is that it's there
+                  and there's some baseline you can improve
+          on.</aside>
+
+            </section>
+            
+
+          </section>
+
+          <!-- Cooking -->
+
+
+          <section>
+            <div class='fija'>
+              <h1>⑦</h1>
+            </div>
+
+            <section>
+              <h1>Documentation <code>=~=</code> <strong>cooking</strong></h1>
+              <h2 class='fragment'>Better there (slightly charred) than
+                order pizza</h2>
+
+              <aside class='notes'>This is just an excuse to segue
+                into my experiments with cooking at home. Besides, I
+                got Cooking for Geeks in the London Perl Workshop, so
+                this is fully Perl-related.</aside>
+            </section>
+            
+            <section
+            data-background='https://farm1.staticflickr.com/839/28281154917_ed7b82465a_k_d.jpg'
+            title='chili con carne'>
+            </section>
+
+            <section
+          data-background='https://farm2.staticflickr.com/1731/42617287851_f0399c5b95_k_d.jpg'
+          title='risotto with ham and peas'>
+              <aside class='notes'>Same as writing documentation, you
+          have to plan, prepare ingredients, test stuff (documentation
+          examples, salt), and then have stuff ready by lunchtime, or
+          have it ready to close an issue. So there are
+          similarities. But basically, I staid at home to work in the
+          grant instead of going to my university office and cooking
+          was an excuse to get out, buy fresh groceries, know the
+          neighborhood shops, and even renewing the set of tools that
+          do the actual cooking. It's been a nice experience, my
+          family has enjoyed it, and I have learned a lot. I will
+          continue to cook from now on, and stay at home as many days
+                as university duties allow. Baseline is stay healthy
+          and know the community in your neighborhood. And if you can
+          do it in a creative way, much better.</aside>
+            </section>
+
+            <section><pre><code>class Cook {
+    has @.utensils  is rw;
+    has @.cookbooks is rw;
+    method cook( $food ) { return "Cooking $food";  }
+    method clean_utensils { 
+      return "Cleaning $_" for @.utensils; 
+    }
+    multi method gist(Cook:U:) { '⚗' ~ self.^name ~ '⚗' }
+    multi method gist(Cook:D:) { 
+      '⚗ Cooks with ' ~ @.utensils.join( " ‣ ") \ 
+      ~ ' using ' \
+      ~ @.cookbooks.map( "«" ~ * ~ "»").join( " and ") }
+}
+
+            </code></pre>
+              <aside class='notes'>So, what do you have to do if
+              you're a geek cook? Cook food and, the most important
+              thing, is to clean utensils. And kitchen cupboard
+              handles. Pro tip: get everything ready in the table
+              before you start, so that you don't have to go get
+              something with icky onion-smelling hands from a cupboard.
+Cooking stuff has been done very
+    extensively in the class tutorial. So I added this to explain how
+                to override gists, in the definite and undefinite
+    case.</aside>
+            </section>
+
+            <section><h1>Cooks will cook</h1>
+              <pre><code>my $cook = Cook.new(
+    utensils => &lt;spoon ladle knife pan>,
+    cookbooks => ['Cooking for geeks','The French Chef Cookbook']);
+say Cook.gist; # OUTPUT: «⚗Cook⚗»
+say $cook.gist; 
+# OUTPUT: «⚗ Cooks with spoon ‣ ladle ‣ knife ‣ pan using 
+# «Cooking for geeks» and «The French Chef Cookbook»␤»</code></pre>
+            </section>
+          </section>
+
+          <section>
+            
+            <div class='fija'>
+              <h1>⑧</h1>
+            </div>
+
+
+            <section>
+              <h1>We are in a <strong>complex</strong> system</h1>
+            </section>
+
+            <section data-background='img/sankey.png' title='sankey diagram'>
+              <h1><a href='https://jj.github.io/TPF-Grant/html/sankey.html'>Sankey
+              diagram</a></h1>
+            </section>
+
+            <section
+            data-background='https://raw.githubusercontent.com/JJ/TPF-Grant/master/illos/zipf-lines-written.png'>
+              <h1><strong>Zipf</strong> is the law</h1></section>
+
+            <section><h1>Ducks do complex</h1>
+              <pre><code>say [[1, 2, [3, 4]], [[5, 6, [7, 8]]]].duckmap:
+   -> $array where .elems == 2 { $array.elems };
+# OUTPUT: «[[1 2 2] [5 6 2]]␤» </code></pre>
+            </section>
+
+          </section>
+
+          <!-- Next section -->
+          <section>
+            <section data-background='img/feet.jpg'>
+              <h1>Toes</h1>
+              <div class='fija2'>
+                <h1>⑨</h1>
+              </div>
+              <aside class='notes'>Complexity is not helped by the fact
+                that there are all kind of people dwelling in the different
+                Perl 6 repos. So it's a bit like walking on the
+                beach. You are very likepy to step on one. Won't be naming
+                names, but, well, it happens. <em>All</em> the time.</aside>
+            </section>
+
+            <section
+            data-background='https://farm9.staticflickr.com/8185/8423569165_0c61ad9941_k_d.jpg'
+            alt='Broken'>
+              <h1>JJ broke everything!</h1>
+              <aside class='notes'>Well, that happens. Over all when
+            you have to work with some legacy code written by 200
+            different persons, and you don't quite understand what
+            happens sometimes. Fortunately, you fix it and then it's
+                all like "JJ fixed everything"!</aside>
+            </section>
+          </section>
+
+          <!-- Last section -->
+          <section>
+
+            <div class='fija'>
+              <h1>Ⓧ</h1>
+            </div>
+
+            <section><h1>Languages are
+            <strong>people</strong></h1></section>
+
+            <section>
+              <img src='img/languages-people.png' title="People are the hard part">
+            </section>
+
+            <section><h1>They have class</h1>
+              <pre><code>=begin code :preamble&lt;class Person {
+    has Int $.age;
+    has Str $.name;
+    method set-name-age( $!name, $!age ) {}
+};
+my Person $person .= new;
+>
+set-name-age $person: 'jane', 98;   # Indirect invocation
+=end code</code></pre>
+            </section>
+          </section>
+
+          <section>
+            <section><h1>Programming is <strong>solving</strong>
+            problems</h1></section>
+            <section><h1><strong>Our</strong> problem → attract and keep a
+            community</h1></section>
+
+            <section><h1>Make <strong>better</strong> code → become a
+              <strong>better</strong> person</h1>
+              <aside class='notes'>Which is probably one of the
+            takeaway messages. When working on a team, you must solve
+            a problem, and in this case attract community to it. But
+            in the process, get to know other people and yourself and,
+                through it, try and become a better person.</aside>
+            </section>
+
+            <section><h1>Big</h1>
+              <h1 class='fragment'><strong>Huge</strong></h1>
+              <pre class='fragment'><code>sub thank( *%args) { say "Thanks ", %args }; thank :from('♥') </code></pre>
+              <pre class='fragment'><code>OUTPUT: «Thanks {from => ♥}␤»</code></pre>
+            </section>
+
+          </section>
+
+          
+            <section><h2>Credits</h2>
+              <h3>All pictures are mine and have a <code>cc-by-sa</code>
+                license, except: </h3>
+              <ul class='credits'>
+                <li><a
+              href='https://www.flickr.com/photos/mirroringreality/5698994532/'>To
+                  wherever you dream, by Roberta</a></li>
+                <li><a
+              href='https://www.flickr.com/photos/mrjakkjakk/8423569165/'>Shattered,
+                  by Jakk Cutlip</a></li>
+              </ul>
+            </section>
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    
+    <script>
+     // More info about config & dependencies:
+     // - https://github.com/hakimel/reveal.js#configuration
+     // - https://github.com/hakimel/reveal.js#dependencies
+     Reveal.initialize({
+       history: true,
+       width: '99%',
+       dependencies: [
+	 { src: 'plugin/notes/notes.js', async: true },
+	 { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+       ]
+     });
+    </script>
+	</body>
+</html>
