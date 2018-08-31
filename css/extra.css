@@ -1,5 +1,7 @@
 # from https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/
 
+@import url('https://fonts.googleapis.com/css?family=Prosto+One');
+
 blockquote {
   background: #f9f9f9;
   border-left: 10px solid #ccc;
@@ -18,7 +20,7 @@ blockquote:before {
 
 section[data-background] h1 { 
        background-color:rgba(233,223,213,0.7);
-       padding: 50px;
+       padding: 30px;
        margin: 20px;
        border-radius: 30px
 }
@@ -26,6 +28,11 @@ section[data-background] h1 {
 h1 strong {
     font-family: 'Prosto One' !important;
     color: rgb(225,138,7);
+}
+
+h2 strong {
+    font-family: 'Prosto One' !important;
+    color: rgb(224,133,3);
 }
 
 section[data-background] h2 {
