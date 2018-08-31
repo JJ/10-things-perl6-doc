@@ -192,22 +192,57 @@ say $cook.gist;
               <pre><code>say [[1, 2, [3, 4]], [[5, 6, [7, 8]]]].duckmap:
    -> $array where .elems == 2 { $array.elems };
 # OUTPUT: «[[1 2 2] [5 6 2]]␤» </code></pre>
-            </section>
+             </section>
+
+	     <section><pre><code>method distance( @chromosome --> Rat) {
+    my @distances = @!peaks.map: (*.list Z== @chromosome).sum;
+    return 1-@distances.min / @chromosome.elems;
+    }</code></pre>
+</section>
 
              <section data-background='https://farm2.staticflickr.com/1886/43650541904_76d882cd21_o_d.jpg'>
 		><h1>You ain't seen nothin' yet!</h1>
              </section>
 
-	     <section><h1>Threads!</h1>
-	       <h1 class='fragment'>with <strong>auto-threading</strong>!</h1>
+	     <section data-background='https://farm2.staticflickr.com/1847/44221981912_c73ed52137_k_d.jpg'>><h1>Threads!</h1>
+	       <h1 class='fragment'>with <p6strong>auto-threading</strong>!</h1>
              </section>
+
+<section><pre><code>multi sub evaluate( :@population,
+	            :%fitness-of,
+	            :$evaluator,
+                    Bool :$auto-t --> Mix ) is export {
+    my @unique-population = @population.unique;
+    my @evaluations = @unique-population.race(degree => 8)
+      .map( { $^p => $evaluator( $^p ) } );
+    my MixHash $pop-bag;
+    for @evaluations -> $pair {
+        $pop-bag{$pair.key.item} = $pair.value;
+    }
+    return $pop-bag.Mix;
+}</code></pre>
+</section>
 
 	     <section><h1>Full</h1>
 	       <h2 class='fragment'>and <strong>fast</strong></h2>
 	       <h1 class='fragment'>Unicode!</h1>
 	     </section>
 
-	     <section><h1>Check it out now!</h1>
+	     <section><pre><code>my @result =(
+    &lt;TWO THREE FOUR FIVE SEVEN> »~» " " X~ &lt;FIFTHS SIXTHS EIGHTHS>
+    ==> map( {"VULGAR FRACTION " ~ $^þ } )
+    ==> grep({ .uniparse })
+    ==> map( { .uniparse} );
+);</code></pre>
+	    <pre class='fragment'><code>[⅖ ⅗ ⅜ ⅘ ⅚ ⅝ ⅞]
+[⅖ ⅗ ⅜ ⅘ ⅚ ⅝ ⅞]
+[⅖ ⅗ ⅜ ⅘ ⅚ ⅝ ⅞]
+[⅖ ⅗ ⅜ ⅘ ⅚ ⅝ ⅞]
+		 </code></pre>
+	       </section>
+	       
+	       <section data-background='https://farm2.staticflickr.com/1872/29430943147_c1afe51ed7_k_d.jpg'>
+		 <h1>Check <strong>Perl&nbsp;</strong> out now!</h1>
 	       <h2>Thanks for listening!</h2>
              </section>
 	     
